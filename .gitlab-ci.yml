@@ -30,4 +30,4 @@ beta_ios:
   allow_failure: true
   only:
     refs:
-      - master
+      - main
