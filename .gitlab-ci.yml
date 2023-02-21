@@ -1,0 +1,33 @@
+stages:
+  - build
+  - beta
+
+cache:
+  key:
+    files:
+      - Gemfile.lock
+  paths:
+    - vendor/bundle
+
+build_ios:
+  image: macos-12-xcode-14
+  stage: build
+  script:
+    - bundle check --path vendor/bundle || bundle install --path vendor/bundle --jobs $(nproc)
+    - bundle exec fastlane build
+  tags: 
+    - shared-macos-amd64
+
+beta_ios:
+  image: macos-12-xcode-14
+  stage: beta
+  script:
+    - bundle check --path vendor/bundle || bundle install --path vendor/bundle --jobs $(nproc)
+    - bundle exec fastlane beta
+  tags: 
+    - shared-macos-amd64
+  when: manual
+  allow_failure: true
+  only:
+    refs:
+      - master
