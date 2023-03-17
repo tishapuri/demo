@@ -20,7 +20,7 @@ gem 'fastlane'
 
 Then run `bundle install` to install Fastlane and all of it's dependencies.
 
-Once installed, setting up Fastlane is often as easy as running the following command from the `ios/` directory in a Flutter project.
+Once installed, setting up Fastlane is often as easy as running the following command.
 
 ```
 bundle exec fastlane init
