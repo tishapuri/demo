@@ -85,4 +85,4 @@ This project uses the Apple App Store integration to configure interactions with
 With the configuration in place, all that is needed now is to add the `.gitlab-ci.yml` and `fastlane/Fastfile` to the project.
 
 * This [.gitlab-ci.yml](https://gitlab.com/gitlab-org/incubation-engineering/mobile-devops/demo-projects/ios-demo/-/blob/main/.gitlab-ci.yml) has all the configuration needed to run the `build` and `beta` jobs.
-* The [ios/fastlane/Fastfile](https://gitlab.com/gitlab-org/incubation-engineering/mobile-devops/demo-projects/ios-demo/-/blob/main/fastlane/Fastfile) should work for most projects. You may need to customize the options in `build_app`, but since Flutter uses the name `Runner` the iOS projects, this probablly won't need to be changed.
+* The [fastlane/Fastfile](https://gitlab.com/gitlab-org/incubation-engineering/mobile-devops/demo-projects/ios-demo/-/blob/main/fastlane/Fastfile) is an example that can be customized to the specific project settings.
