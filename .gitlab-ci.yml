@@ -24,8 +24,13 @@ build_ios_rosetta:
     - /usr/sbin/softwareupdate --install-rosetta --agree-to-license
     - echo "Is Rosetta 2 installed?"
     - /usr/bin/pgrep -q oahd && echo Yes || echo No
-    - arch -x86_64 /bin/zsh
-    - arch  
+    - echo "Installing Homebrew for x86_64"
+    - arch -x86_64 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    - eval "$(/usr/local/bin/brew shellenv)" 
+    - export PATH="/usr/local/bin:/usr/local/sbin:/Users/gitlab/.asdf/shims:/Users/gitlab/.asdf/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin"
+    - echo "Installing Ruby via Homebrew"
+    - arch -x86_64 brew install ruby
+    - export PATH="/usr/local/opt/ruby/bin:$PATH"
   script:
     - arch -x86_64 bundle install
     - arch -x86_64 bundle exec fastlane build
