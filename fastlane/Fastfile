@@ -20,7 +20,8 @@ platform :ios do
       project: "ios demo.xcodeproj",
       scheme: "ios demo",
       configuration: "Debug",
-      export_method: "development"
+      export_method: "development",
+      destination: "generic/platform=iOS"
     )
   end
 
