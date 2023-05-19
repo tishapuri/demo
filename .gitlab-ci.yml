@@ -9,23 +9,42 @@ cache:
   paths:
     - vendor/bundle
 
-build_ios:
+.macos_saas_runners:
+  tags:
+    - saas-macos-medium-m1
   image: macos-12-xcode-14
+
+build_ios_rosetta:
+  extends:
+    - .macos_saas_runners
+  stage: build
+  before_script:
+    - echo "Is Rosetta 2 installed?"
+    - /usr/bin/pgrep -q oahd && echo Yes || echo No
+    - /usr/sbin/softwareupdate --install-rosetta --agree-to-license
+    - echo "Is Rosetta 2 installed?"
+    - /usr/bin/pgrep -q oahd && echo Yes || echo No
+    - arch -x86_64 /bin/zsh
+    - arch  
+  script:
+    - arch -x86_64 bundle install
+    - arch -x86_64 bundle exec fastlane build
+
+build_ios:
+  extends:
+    - .macos_saas_runners
   stage: build
   script:
     - bundle check --path vendor/bundle || bundle install --path vendor/bundle --jobs $(nproc)
     - bundle exec fastlane build
-  tags: 
-    - saas-macos-medium-m1
 
 beta_ios:
-  image: macos-12-xcode-14
+  extends:
+    - .macos_saas_runners
   stage: beta
   script:
     - bundle check --path vendor/bundle || bundle install --path vendor/bundle --jobs $(nproc)
     - bundle exec fastlane beta
-  tags: 
-    - saas-macos-medium-m1
   when: manual
   allow_failure: true
   only:
