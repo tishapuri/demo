@@ -10,22 +10,20 @@ cache:
     - vendor/bundle
 
 build_ios:
-  image: macos-12-xcode-14
   stage: build
   script:
     - bundle check --path vendor/bundle || bundle install --path vendor/bundle --jobs $(nproc)
     - bundle exec fastlane build
   tags: 
-    - saas-macos-medium-m1
+    - macbook-air-m1
 
 beta_ios:
-  image: macos-12-xcode-14
   stage: beta
   script:
     - bundle check --path vendor/bundle || bundle install --path vendor/bundle --jobs $(nproc)
     - bundle exec fastlane beta
   tags: 
-    - saas-macos-medium-m1
+    - macbook-air-m1
   when: manual
   allow_failure: true
   only:
