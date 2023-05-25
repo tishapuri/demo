@@ -5,20 +5,18 @@ stages:
 build_ios:
   stage: build
   script:
-    - gem install bundler --no-document
     - bundle install
     - bundle exec fastlane build
   tags: 
-    - macbook-air-m1
+    - macbook-air-m1-host
 
 beta_ios:
   stage: beta
   script:
-    - gem install bundler --no-document
     - bundle install
     - bundle exec fastlane beta
   tags: 
-    - macbook-air-m1
+    - macbook-air-m1-host
   when: manual
   allow_failure: true
   only:
