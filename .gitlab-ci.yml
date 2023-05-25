@@ -5,7 +5,7 @@ stages:
 build_ios:
   stage: build
   script:
-    - source .bashrc
+    - source ~/.bashrc
     - bundle install
     - bundle exec fastlane build
   tags: 
@@ -14,7 +14,7 @@ build_ios:
 beta_ios:
   stage: beta
   script:
-    - source .bashrc
+    - source ~/.bashrc
     - bundle install
     - bundle exec fastlane beta
   tags: 
