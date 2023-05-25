@@ -5,18 +5,20 @@ stages:
 build_ios:
   stage: build
   script:
+    - source .bashrc
     - bundle install
     - bundle exec fastlane build
   tags: 
-    - macbook-air-m1-host
+    - macbook-air-m1
 
 beta_ios:
   stage: beta
   script:
+    - source .bashrc
     - bundle install
     - bundle exec fastlane beta
   tags: 
-    - macbook-air-m1-host
+    - macbook-air-m1
   when: manual
   allow_failure: true
   only:
