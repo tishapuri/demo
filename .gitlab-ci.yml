@@ -16,7 +16,7 @@ build_ios:
     - echo $SHELL
     - which ruby
     - gem list
-    - source ~/.zshrc
+    - source ~/.bashrc
     - echo $SHELL
     - which ruby
     - gem list
