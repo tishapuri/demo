@@ -14,6 +14,8 @@ build_ios:
   stage: build
   script:
     - echo $SHELL
+    - which ruby
+    - gem list
     - bundle check --path vendor/bundle || bundle install --path vendor/bundle --jobs $(nproc)
     - bundle exec fastlane build
   tags: 
