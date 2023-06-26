@@ -16,6 +16,10 @@ build_ios:
     - echo $SHELL
     - which ruby
     - gem list
+    - source ~/.zshrc
+    - echo $SHELL
+    - which ruby
+    - gem list
     - bundle check --path vendor/bundle || bundle install --path vendor/bundle --jobs $(nproc)
     - bundle exec fastlane build
   tags: 
