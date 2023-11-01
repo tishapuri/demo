@@ -2,12 +2,6 @@ stages:
   - build
   - beta
 
-parallel:
-  matrix:
-    - IMAGE: macos-12-xcode-14
-    - IMAGE: macos-13-xcode-14
-    - IMAGE: macos-14-xcode-15
-
 cache:
   key:
     files:
@@ -23,9 +17,14 @@ build_ios:
     - bundle exec fastlane build
   tags: 
     - saas-macos-staging
+  parallel:
+    matrix:
+      - IMAGE: macos-12-xcode-14
+      - IMAGE: macos-13-xcode-14
+      - IMAGE: macos-14-xcode-15
 
 beta_ios:
-  image: $IMAGE
+  image: macos-13-xcode-14
   stage: beta
   script:
     - bundle check --path vendor/bundle || bundle install --path vendor/bundle --jobs $(nproc)
