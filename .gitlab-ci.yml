@@ -20,7 +20,7 @@ cache:
 build_ios_m1:
   extends: .build_ios
   tags: 
-    - saas-macos-large-m1
+    - saas-macos-medium-m1
 
 build_ios_m2pro:
   extends: .build_ios
@@ -39,7 +39,7 @@ build_ios_m2pro:
 beta_ios_m1:
   extends: .beta_ios
   tags: 
-    - saas-macos-large-m1
+    - saas-macos-medium-m1
 
 beta_ios_m2pro:
   extends: .beta_ios
