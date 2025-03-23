@@ -41,6 +41,7 @@ jobs:
       - name: Run tests
         run: |
           xcrun simctl list
+          ideviceinstaller -l 
           xcodebuild -list -project "ios demo.xcodeproj"
           xcodebuild test-without-building -scheme "ios demo" -destination 'platform=iOS Simulator,name=iPhone 16 Pro,OS=latest' -only-testing:"ios demoTests"| xcpretty
         if: always()
