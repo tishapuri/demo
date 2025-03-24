@@ -41,6 +41,8 @@ jobs:
           name: swiftlint-report
           path: |
              swiftlint_report.html
+      - name: Install Sonar scanner
+        run: brew install sonar-scanner
           
       - name: Run tests
         run: |  
