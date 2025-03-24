@@ -68,6 +68,7 @@ jobs:
           echo "testing java home: $JAVA_HOME"
           $(pwd)/sonar-scanner-7.0.2.4839-macosx-x64/bin/sonar-scanner \
             -Dsonar.projectKey=iosdemo \
+            -Dsonar.projectName=demo
             -Dsonar.organization=tishapuri \
             -Dsonar.host.url=https://sonarcloud.io \
             -Dsonar.login=1eccb394e2d052b41b04c5c4fb8890f44fd6ad7a -X        
