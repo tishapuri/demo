@@ -29,22 +29,15 @@ jobs:
       - name: Install Fastlane
         run: gem install fastlane
         # generate the signing certificates and provisioning profiles for our app
-      - name: Code Signing
-        run: fastlane match development
-        env:
-          # Clone repo where certificates are stored or create new 
-          MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
-          # Apple Developer Program account credentials for Fastlane to connect ,apple_id is define in appfile
-          FASTLANE_PASSWORD: ${{ secrets.APPLE_PASSWORD }}
-          
+      
       - name: Run SwiftLint
         run: |
           brew install swiftlint
+          swiftlint version
           swiftlint
           
       - name: Run tests
         run: |  
-          swiftlint version
           xcrun simctl list
           xcodebuild -list -project "ios demo.xcodeproj"
           xcodebuild test -scheme "ios demo" -destination 'platform=iOS Simulator,name=iPhone 16 Pro,OS=latest' -only-testing:"ios demoTests"| xcpretty
