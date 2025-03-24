@@ -41,8 +41,6 @@ jobs:
           name: swiftlint-report
           path: |
              swiftlint_report.html
-      - name: Install Sonar scanner
-        run: brew install sonar-scanner
       - name: SonarCloud Scan
         uses: SonarSource/sonarqube-scan-action@v5
         env:
