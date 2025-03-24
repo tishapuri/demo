@@ -56,7 +56,7 @@ jobs:
         
           curl -OL https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-7.0.2.4839-macosx-x64.zip
           unzip sonar-scanner-cli-7.0.2.4839-macosx-x64.zip
-          export PATH=$PATH:$(pwd)/sonar-scanner-7.0.2.4839--macosx/bin
+          export PATH=$PATH:$(pwd)/sonar-scanner-7.0.2.4839-macosx/bin
           echo "PATH: $PATH"
           echo "SonarScanner path: $(which sonar-scanner)"
           sonar-scanner --version  
