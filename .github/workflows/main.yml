@@ -41,6 +41,7 @@ jobs:
       
       - name: Run tests
         run: |
+          swiftlint version
           xcrun simctl list
           xcodebuild -list -project "ios demo.xcodeproj"
           xcodebuild test -scheme "ios demo" -destination 'platform=iOS Simulator,name=iPhone 16 Pro,OS=latest' -only-testing:"ios demoTests"| xcpretty
