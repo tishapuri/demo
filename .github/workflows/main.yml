@@ -43,13 +43,13 @@ jobs:
              swiftlint_report.html
       - name: Install Sonar scanner
         run: brew install sonar-scanner
-      - name: Run SonarQube Analysis
-        run: |
-          sonar-scanner \
-          -Dsonar.projectKey=IOS_demo \
-          -Dsonar.sources=. \
-          -Dsonar.host.url=http://localhost:9002/ \
-          -Dsonar.login=admin
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarqube-scan-action@v4
+        env:
+          SONAR_TOKEN: 1eccb394e2d052b41b04c5c4fb8890f44fd6ad7a
+          SONAR_PROJECT_KEY: iosdemo
+          SONAR_ORGANIZATION: tishapuri
+          SONAR_HOST_URL: https://sonarcloud.io
           
       - name: Run tests
         run: |  
