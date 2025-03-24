@@ -41,6 +41,7 @@ jobs:
       
       - name: Run tests
         run: |
+          brew install swiftlint
           swiftlint version
           xcrun simctl list
           xcodebuild -list -project "ios demo.xcodeproj"
