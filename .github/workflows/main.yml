@@ -36,12 +36,14 @@ jobs:
           MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
           # Apple Developer Program account credentials for Fastlane to connect ,apple_id is define in appfile
           FASTLANE_PASSWORD: ${{ secrets.APPLE_PASSWORD }}
-      #- name: SwiftFormat
-       # run: swiftformat . --lint
-      
-      - name: Run tests
+          
+      - name: Run SwiftLint
         run: |
           brew install swiftlint
+          swiftlint
+          
+      - name: Run tests
+        run: |  
           swiftlint version
           xcrun simctl list
           xcodebuild -list -project "ios demo.xcodeproj"
