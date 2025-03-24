@@ -71,7 +71,7 @@ jobs:
             -Dsonar.projectName=demo
             -Dsonar.organization=tishapuri \
             -Dsonar.host.url=https://sonarcloud.io \
-            -Dsonar.login=1eccb394e2d052b41b04c5c4fb8890f44fd6ad7a     
+            -Dsonar.token=1eccb394e2d052b41b04c5c4fb8890f44fd6ad7a     
       - name: Run tests
         run: |  
           xcrun simctl list
