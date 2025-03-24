@@ -46,10 +46,10 @@ jobs:
       - name: Run SonarQube Analysis
         run: |
           sonar-scanner \
-          -Dsonar.projectKey=comcast \
+          -Dsonar.projectKey=IOS_demo \
           -Dsonar.sources=. \
-          -Dsonar.host.url=https://infysonar.tools.infosysapps.com/ \
-          -Dsonar.login=testing
+          -Dsonar.host.url=http://localhost:9002/ \
+          -Dsonar.login=admin
           
       - name: Run tests
         run: |  
