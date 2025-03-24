@@ -67,7 +67,6 @@ jobs:
           export PATH=$JAVA_HOME/bin:$PATH
           echo "testing java home: $JAVA_HOME"
           $(pwd)/sonar-scanner-7.0.2.4839-macosx-x64/bin/sonar-scanner \
-            -Dsonar.projectKey=iosdemo \
             -Dsonar.projectName=demo \
             -Dsonar.organization=tishapuri \
             -Dsonar.host.url=https://sonarcloud.io \
