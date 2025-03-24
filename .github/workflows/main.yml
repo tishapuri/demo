@@ -53,8 +53,15 @@ jobs:
           unzip sonar-scanner-cli-4.6.2.2472-macosx.zip
           export PATH=$PATH:$(pwd)/sonar-scanner-4.6.2.2472-macosx/bin
           
+      - name: Verify SonarScanner Installation
+        run: |
+          echo "Current working directory: $(pwd)"
+          echo "SonarScanner path: $(which sonar-scanner)"
+          sonar-scanner --version 
+          
       - name: SonarCloud using Scan
         run: |
+          echo "Current working directory: $(pwd)"
           sonar-scanner \
             -Dsonar.projectKey=iosdemo \
             -Dsonar.organization=tishapuri \
