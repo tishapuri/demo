@@ -1,0 +1,47 @@
+
+name: iOS Unit Tests
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.1.0'
+
+      - name: Install dependencies
+        run: |
+          gem install bundler
+          bundle install
+
+      - name: Install Fastlane
+        run: gem install fastlane
+        # generate the signing certificates and provisioning profiles for our app
+      - name: Code Signing
+        run: fastlane match development
+        env:
+          # Clone repo where certificates are stored or create new 
+          MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
+          # Apple Developer Program account credentials for Fastlane to connect ,apple_id is define in appfile
+          FASTLANE_PASSWORD: ${{ secrets.APPLE_PASSWORD }}
+      #- name: SwiftFormat
+       # run: swiftformat . --lint
+      
+      - name: Run tests
+        run: |
+          xcrun simctl list
+          xcodebuild -list -project "ios demo.xcodeproj"
+          xcodebuild test -scheme "ios demo" -destination 'platform=iOS Simulator,name=iPhone 16 Pro,OS=latest'| xcpretty
+        if: always()
