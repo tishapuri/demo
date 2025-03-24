@@ -41,6 +41,24 @@ jobs:
           name: swiftlint-report
           path: |
              swiftlint_report.html
+      - name: Set up JDK 11
+        uses: actions/setup-java@v3
+        with:
+          java-version: '11'
+
+      - name: Install SonarScanner CLI
+        run: |
+          wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.6.2.2472-linux.zip
+          unzip sonar-scanner-cli-4.6.2.2472-linux.zip
+          export PATH=$PATH:$(pwd)/sonar-scanner-4.6.2.2472-linux/bin
+
+      - name: SonarCloud using Scan
+        run: |
+          sonar-scanner \
+            -Dsonar.projectKey=iosdemo \
+            -Dsonar.organization=tishapuri \
+            -Dsonar.host.url=https://sonarcloud.io \
+            -Dsonar.login=1eccb394e2d052b41b04c5c4fb8890f44fd6ad7a
       - name: SonarCloud Scan
         uses: SonarSource/sonarqube-scan-action@v5
         env:
