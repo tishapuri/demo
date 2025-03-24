@@ -43,6 +43,13 @@ jobs:
              swiftlint_report.html
       - name: Install Sonar scanner
         run: brew install sonar-scanner
+      - name: Run SonarQube Analysis
+        run: |
+          sonar-scanner \
+          -Dsonar.projectKey=comcast \
+          -Dsonar.sources=. \
+          -Dsonar.host.url=https://infysonar.tools.infosysapps.com/ \
+          -Dsonar.login= testing
           
       - name: Run tests
         run: |  
