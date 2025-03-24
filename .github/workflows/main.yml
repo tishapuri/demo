@@ -46,7 +46,10 @@ jobs:
         with:
           java-version: '17'
           distribution: 'adopt'
-
+      - name: Verify Java Version and JAVA_HOME
+        run: |
+          java -version
+          echo "JAVA_HOME: $JAVA_HOME"
 
       - name: Install SonarScanner CLI
         run: |
