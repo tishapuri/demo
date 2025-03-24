@@ -49,7 +49,7 @@ jobs:
           -Dsonar.projectKey=comcast \
           -Dsonar.sources=. \
           -Dsonar.host.url=https://infysonar.tools.infosysapps.com/ \
-          -Dsonar.login= testing
+          -Dsonar.login=testing
           
       - name: Run tests
         run: |  
