@@ -10,7 +10,7 @@ on:
       - main
 
 jobs:
-  test:
+  build:
     runs-on: macos-latest
     steps:
       - name: Checkout code
@@ -46,6 +46,24 @@ jobs:
         with:
           name: build
           path: "${{ github.workspace }}/ios_demo.xcarchive"
+  deploy:
+    runs-on: macos-latest
+    needs: build
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: build
+          path: ${{ github.workspace }}
+
+      - name: Compress the .app file
+        run: |
+          cd ${{ github.workspace }}/ios_demo.xcarchive/Products/Applications
+          zip -r ios_demo.zip ios_demo.app
+
+      - name: Upload to Appetize
+        run: |
+          curl -F "file=@${{ github.workspace }}/ios_demo.xcarchive/Products/Applications/ios_demo.zip" https://appetize.io/upload
       - name: Run tests
         run: |  
           xcrun simctl list
