@@ -31,8 +31,8 @@ jobs:
         # generate the signing certificates and provisioning profiles for our app
       
       - name: Run Build
-        run: xcodebuild -scheme "ios demo" -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 12,OS=14.4' CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO build archive -archivePath ${{ github.workspace }}/build/ios\ demo.xcarchive
-      - name: Run Build
+        run: xcodebuild -scheme "ios demo" -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 12,OS=14.4' CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO build archive -archivePath /Users/runner/Library/Developer/Xcode/DerivedData/ios_demo-cmuzcbcjvxsekzadiatuzsfbfxvx/Build/Products/Release-iphoneos/ios_demo.xcarchive
+      - name: To Build information
         run: xcodebuild -scheme "ios demo" -showBuildSettings | grep BUILD_DIR
         if: always()
       - name: List build directory
@@ -44,7 +44,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: build
-          path: "${{ github.workspace }}/build/ios demo.xcarchive"
+          path: "/Users/runner/Library/Developer/Xcode/DerivedData/ios_demo-cmuzcbcjvxsekzadiatuzsfbfxvx/Build/Products/Release-iphoneos/ios_demo.xcarchive"
       - name: Run tests
         run: |  
           xcrun simctl list
