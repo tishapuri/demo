@@ -31,7 +31,9 @@ jobs:
         # generate the signing certificates and provisioning profiles for our app
       
       - name: Run Build
-        run: xcodebuild -scheme "ios demo" -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 12,OS=14.4' CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO build archive -archivePath /Users/runner/Library/Developer/Xcode/DerivedData/ios_demo-cmuzcbcjvxsekzadiatuzsfbfxvx/Build/Products/Release-iphoneos/ios_demo.xcarchive
+        run: |
+          xcodebuild -scheme "ios demo" -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 12,OS=14.4' CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO build archive -archivePath /Users/runner/Library/Developer/Xcode/DerivedData/ios_demo-cmuzcbcjvxsekzadiatuzsfbfxvx/Build/Products/Release-iphoneos/ios_demo.xcarchive
+          ls /Users/runner/Library/Developer/Xcode/DerivedData/ios_demo-cmuzcbcjvxsekzadiatuzsfbfxvx/Build/Products/Release-iphoneos
       - name: To Build information
         run: xcodebuild -scheme "ios demo" -showBuildSettings | grep BUILD_DIR
         if: always()
