@@ -38,7 +38,7 @@ jobs:
       - name: List build directory
         run: |
           echo "present working : $pwd"
-          ls ${{ github.workspace }}
+          ls /Users/runner/Library/Developer/Xcode/DerivedData/ios_demo-cmuzcbcjvxsekzadiatuzsfbfxvx/Build/Products/Release-iphoneos
         if: always()
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
