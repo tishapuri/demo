@@ -58,12 +58,12 @@ jobs:
 
       - name: Compress the .app file
         run: |
-          cd ${{ github.workspace }}/ios_demo.xcarchive/Products/Applications
+          cd ${{ github.workspace }}/build/Products/Applications
           zip -r ios_demo.zip ios_demo.app
 
       - name: Upload to Appetize
         run: |
-          curl -F "file=@${{ github.workspace }}/ios_demo.xcarchive/Products/Applications/ios_demo.zip" -H "Authorization: Bearer tok_uqegreafft5ppbyfpzw22cuxlm" https://appetize.io/upload
+          curl -F "file=@${{ github.workspace }}/build/Products/Applications/ios_demo.zip" -H "Authorization: Bearer tok_uqegreafft5ppbyfpzw22cuxlm" https://appetize.io/upload
       - name: Run tests
         run: |  
           xcrun simctl list
