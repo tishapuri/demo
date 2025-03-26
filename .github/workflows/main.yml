@@ -67,5 +67,5 @@ jobs:
 
       - name: Upload to Appetize
         run: |
-          curl -X -F "file=@${{ github.workspace }}/Products/Applications/ios_demo.zip" -H "Authorization: Bearer tok_uqegreafft5ppbyfpzw22cuxlm" https://appetize.io/upload
+          curl -v -F "file=@${{ github.workspace }}/Products/Applications/ios_demo.zip" -H "Authorization: Bearer tok_uqegreafft5ppbyfpzw22cuxlm" https://appetize.io/upload
       
