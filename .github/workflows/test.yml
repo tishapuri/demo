@@ -43,11 +43,12 @@ jobs:
       
       - name: Compress the .app file
         run: |
+          pwd
           ls -lrt Products
-          cd Products/Applications
+          cd /Users/runner/Library/Developer/Xcode/DerivedData/ios_demo-cmuzcbcjvxsekzadiatuzsfbfxvx/Build/Products/Debug-iphoneos
+      
           ls -ltr
           
-          cd ${{ github.workspace }}/Products/Applications
           zip -r ios_demo.zip "ios demo.app"
 
       - name: Upload to Appetize
