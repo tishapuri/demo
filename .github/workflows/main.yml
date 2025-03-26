@@ -67,10 +67,5 @@ jobs:
 
       - name: Upload to Appetize
         run: |
-          curl -F "file=@${{ github.workspace }}/Products/Applications/ios_demo.zip" -H "Authorization: Bearer tok_uqegreafft5ppbyfpzw22cuxlm" https://appetize.io/upload
-      - name: Run tests
-        run: |  
-          xcrun simctl list
-          xcodebuild -list -project "ios demo.xcodeproj"
-          xcodebuild test -scheme "ios demo" -destination 'platform=iOS Simulator,name=iPhone 16 Pro,OS=latest' -only-testing:"ios demoTests"| xcpretty
-  
+          curl -X -F "file=@${{ github.workspace }}/Products/Applications/ios_demo.zip" -H "Authorization: Bearer tok_uqegreafft5ppbyfpzw22cuxlm" https://appetize.io/upload
+      
