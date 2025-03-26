@@ -44,7 +44,7 @@ jobs:
       - name: Compress the .app file
         run: |
           pwd
-          ls -lrt Products
+          
           cd /Users/runner/Library/Developer/Xcode/DerivedData/ios_demo-cmuzcbcjvxsekzadiatuzsfbfxvx/Build/Products/Debug-iphoneos
       
           ls -ltr
