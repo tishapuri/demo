@@ -59,7 +59,7 @@ jobs:
       - name: Compress the .app file
         run: |
           ls -ltr
-          cd ${{ github.workspace }}/build/Products/Applications
+          cd ${{ github.workspace }}/Products/Applications
           zip -r ios_demo.zip ios_demo.app
 
       - name: Upload to Appetize
