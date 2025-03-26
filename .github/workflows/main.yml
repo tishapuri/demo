@@ -30,7 +30,7 @@ jobs:
         run: gem install fastlane
         # generate the signing certificates and provisioning profiles for our app
       
-      - name: Run Build
+      - name: Compile the build 
         run: |
           xcodebuild -scheme "ios demo" -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 12,OS=14.4' CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO build archive -archivePath ${{ github.workspace }}/ios_demo.xcarchive
           ls /Users/runner/Library/Developer/Xcode/DerivedData/ios_demo-cmuzcbcjvxsekzadiatuzsfbfxvx/Build/Products/Debug-iphoneos/
