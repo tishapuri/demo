@@ -63,7 +63,7 @@ jobs:
           ls -ltr
           
           cd ${{ github.workspace }}/Products/Applications
-          zip -r ios_demo.zip ios_demo.app
+          zip -r ios_demo.zip "ios demo.app"
 
       - name: Upload to Appetize
         run: |
