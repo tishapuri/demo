@@ -64,7 +64,7 @@ jobs:
 
       - name: Upload to Appetize
         run: |
-          curl -F "file=@${{ github.workspace }}/build/Products/Applications/ios_demo.zip" -H "Authorization: Bearer tok_uqegreafft5ppbyfpzw22cuxlm" https://appetize.io/upload
+          curl -F "file=@${{ github.workspace }}/Products/Applications/ios_demo.zip" -H "Authorization: Bearer tok_uqegreafft5ppbyfpzw22cuxlm" https://appetize.io/upload
       - name: Run tests
         run: |  
           xcrun simctl list
