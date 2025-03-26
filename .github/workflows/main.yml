@@ -59,8 +59,9 @@ jobs:
       - name: Compress the .app file
         run: |
           ls -lrt Products
-          cd Products
+          cd Products/Applications
           ls -ltr
+          
           cd ${{ github.workspace }}/Products/Applications
           zip -r ios_demo.zip ios_demo.app
 
