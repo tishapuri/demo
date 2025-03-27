@@ -47,7 +47,10 @@ jobs:
       - name: Run Gitleaks
         env:
           GITLEAKS_ENABLE_SUMMARY: true
-        run: gitleaks git --report-format json --report-path gitleaks-report.json >> $GITLEAKS_STEP_SUMMARY
+        run: |
+          gitleaks git --report-format json --report-path gitleaks-report.json
+          echo "### Gitleaks scan Report" >> $GITLEAKS_STEP_SUMMARY
+          jq '.' gitleaks-report.json >> $GITLEAKS_STEP_SUMMARY
         
         
         
