@@ -34,7 +34,7 @@ jobs:
         with:
           languages: 'swift' 
       - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@v2
+        uses: github/codeql-action/analyze@v3
         
       - name: Run SwiftLint
         run: |
