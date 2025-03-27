@@ -45,8 +45,6 @@ jobs:
          # For Windows, you might need to use a different installation method
 
       - name: Run Gitleaks
-        env:
-          GITLEAKS_ENABLE_SUMMARY: true
         run: |
           gitleaks detect --source . --report-format json --report-path gitleaks-report.json --verbose
           
