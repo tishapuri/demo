@@ -46,7 +46,7 @@ jobs:
 
       - name: Run Gitleaks
         run: |
-          gitleaks detect --source .  --report-format json --report-path gitleaks-report.json --verbose || true
+          gitleaks detect --source .  --report-format junit --report-path gitleaks-report.junit --verbose || true
           
           echo "### Gitleaks scan Report" >> $GITHUB_STEP_SUMMARY
           jq '.' gitleaks-report.json >> $GITHUB_STEP_SUMMARY
@@ -57,7 +57,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: gitleaks-report
-          path: gitleaks-report.json
+          path: gitleaks-report.junit
         if: always()
         
       - name: Build the app
