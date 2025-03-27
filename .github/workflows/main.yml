@@ -49,7 +49,7 @@ jobs:
           gitleaks detect --source .  --report-format junit --report-path gitleaks-report.junit --verbose || true
           
           echo "### Gitleaks scan Report" >> $GITHUB_STEP_SUMMARY
-          jq '.' gitleaks-report.json >> $GITHUB_STEP_SUMMARY
+          jq '.' gitleaks-report.junit >> $GITHUB_STEP_SUMMARY
         
         
         
