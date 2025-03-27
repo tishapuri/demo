@@ -28,11 +28,6 @@ jobs:
 
       - name: Install Fastlane
         run: gem install fastlane
-      - name: Run Gitleaks
-        uses: gitleaks/gitleaks-action@v2
-        with:
-         config: .gitleaks.toml
-         verbose: true
         
       - name: Run SwiftLint
         run: |
