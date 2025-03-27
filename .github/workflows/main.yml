@@ -39,7 +39,9 @@ jobs:
         run: |
           echo "present working : $(pwd)"
           echo "workspace directory is $GITHUB_WORKSPACE"
-          ls $GITHUB_WORKSPACE/build
+          ls -ltr $GITHUB_WORKSPACE/build
+          cd build 
+          ls -ltr 
           ls /Users/runner/Library/Developer/Xcode/DerivedData/ios_demo-cmuzcbcjvxsekzadiatuzsfbfxvx/Build/Products/Debug-iphonesimulator
           
 
