@@ -28,7 +28,12 @@ jobs:
 
       - name: Install Fastlane
         run: gem install fastlane
-        
+      - name: Run Gitleaks
+        uses: gitleaks/gitleaks-action@v2
+        with:
+          verbose: true
+        env:
+          GITLEAKS_ENABLE_SUMMARY: true
       - name: Run SwiftLint
         run: |
           brew install swiftlint
@@ -48,10 +53,10 @@ jobs:
         env:
           GITLEAKS_ENABLE_SUMMARY: true
         run: |
-          gitleaks detect --source .  --report-format junit --report-path gitleaks-report.junit --verbose || true
+          gitleaks detect --source .  --report-format json --report-path gitleaks-report.json --verbose || true
           
           echo "### Gitleaks scan Report" >> $GITHUB_STEP_SUMMARY
-          jq '.' gitleaks-report.junit >> $GITHUB_STEP_SUMMARY
+          jq '.' gitleaks-report.json >> $GITHUB_STEP_SUMMARY
         
         
         
@@ -59,7 +64,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: gitleaks-report
-          path: gitleaks-report.junit
+          path: gitleaks-report.json
         if: always()
         
       - name: Build the app
