@@ -60,6 +60,6 @@ jobs:
 
       - name: Upload to Appetize
         run: |
-          curl --http1.1 https://tok_uqegreafft5ppbyfpzw22cuxlm@api.appetize.io/v1/apps -F "file=@/Users/runner/Library/Developer/Xcode/DerivedData/ios_demo-cmuzcbcjvxsekzadiatuzsfbfxvx/Build/Products/Debug-iphoneos/ios_demo.zip" -F "platform=ios"
+          curl --http1.1 https://tok_uqegreafft5ppbyfpzw22cuxlm@api.appetize.io/v1/apps -F "file=@/Users/runner/Library/Developer/Xcode/DerivedData/ios_demo-cmuzcbcjvxsekzadiatuzsfbfxvx/Build/Products/Debug-iphonesimulator/ios_demo.zip" -F "platform=ios"
           #curl -v -F "file=@${{ github.workspace }}/Products/Applications/ios_demo.zip" -H "Authorization: Bearer tok_uqegreafft5ppbyfpzw22cuxlm" https://appetize.io/upload
       
