@@ -28,6 +28,19 @@ jobs:
 
       - name: Install Fastlane
         run: gem install fastlane
+        
+      - name: Run SwiftLint
+        run: |
+          brew install swiftlint
+          swiftlint version
+          swiftlint lint --reporter html > swiftlint_report.html || true
+      - name: Upload SwiftLint Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: swiftlint-report
+          path: |
+             swiftlint_report.html
+             
       - name: Compile the build 
         run: |
           xcrun simctl list devices
@@ -40,13 +53,8 @@ jobs:
       - name: List build directory
         run: |
           echo "present working : $(pwd)"
-          echo "workspace directory is $GITHUB_WORKSPACE"
-          ls -ltr $GITHUB_WORKSPACE/build
-          cd build 
-          ls -ltr 
+          echo "workspace directory is $GITHUB_WORKSPACE" 
           ls -ltr $GITHUB_WORKSPACE/target/Build/Products/Debug-iphonesimulator
-          
-          #ls /Users/runner/Library/Developer/Xcode/DerivedData/ios_demo-cmuzcbcjvxsekzadiatuzsfbfxvx/Build/Products/Debug-iphonesimulator
           
 
       - name: Compress the .app file
