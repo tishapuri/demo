@@ -45,7 +45,8 @@ jobs:
          # For Windows, you might need to use a different installation method
 
       - name: Run Gitleaks
-        run: gitleaks git --report-format json --report-path gitleaks-report.json  
+        run: gitleaks git --report-format json --report-path gitleaks-report.json 
+        if: always()
         
       - name: Upload Gitleaks report
         uses: actions/upload-artifact@v4
