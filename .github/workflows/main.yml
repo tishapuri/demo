@@ -33,6 +33,7 @@ jobs:
           xcrun simctl list devices
           xcodebuild -scheme "ios demo" -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 15 Pro Max' CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO build -derivedDataPath $GITHUB_WORKSPACE/build
           xcodebuild -scheme "ios demo" -showBuildSettings | grep BUILD_DIR
+          xcodebuild -scheme "ios demo" -configuration Debug -sdk iphonesimulator -showBuildSettings | grep BUILD_DIR
         if: always()
         
       - name: List build directory
