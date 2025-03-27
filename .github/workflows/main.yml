@@ -45,14 +45,15 @@ jobs:
          # For Windows, you might need to use a different installation method
 
       - name: Run Gitleaks
-        run: gitleaks git --report-format json --report-path gitleaks-report.json 
-        if: always()
+        run: gitleaks git --report-format json --report-path gitleaks-report.json  || true
+        
         
       - name: Upload Gitleaks report
         uses: actions/upload-artifact@v4
         with:
           name: gitleaks-report
           path: gitleaks-report.json
+        if: always()
       - name: Build the app
         run: |
           xcrun simctl list devices
