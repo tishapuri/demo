@@ -43,7 +43,9 @@ jobs:
           ls -ltr $GITHUB_WORKSPACE/build
           cd build 
           ls -ltr 
-          ls /Users/runner/Library/Developer/Xcode/DerivedData/ios_demo-cmuzcbcjvxsekzadiatuzsfbfxvx/Build/Products/Debug-iphonesimulator
+          ls -ltr $GITHUB_WORKSPACE/build/Build/Products/Debug-iphonesimulator
+          
+          #ls /Users/runner/Library/Developer/Xcode/DerivedData/ios_demo-cmuzcbcjvxsekzadiatuzsfbfxvx/Build/Products/Debug-iphonesimulator
           
 
       - name: Compress the .app file
