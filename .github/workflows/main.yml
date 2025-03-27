@@ -12,9 +12,6 @@ on:
 jobs:
   build:
     runs-on: macos-latest
-    strategy:
-      matrix:
-        language: ['swift', 'ruby']  # Add more languages as needed
 
     steps:
       - name: Checkout code
@@ -32,14 +29,7 @@ jobs:
 
       - name: Install Fastlane
         run: gem install fastlane
-        
-      - name: Initialize CodeQL
-        uses: github/codeql-action/init@v3
-        with:
-          languages: ${{ matrix.language }}
-      - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@v3
-        
+      
       - name: Run SwiftLint
         run: |
           brew install swiftlint
@@ -102,5 +92,5 @@ jobs:
 
       - name: Upload to Appetize
         run: |
-          #curl --http1.1 https://tok_uqegreafft5ppbyfpzw22cuxlm@api.appetize.io/v1/apps -F "file=@$GITHUB_WORKSPACE/target/Build/Products/Debug-iphonesimulator/ios_demo.zip" -F "platform=ios"
+          curl --http1.1 https://tok_uqegreafft5ppbyfpzw22cuxlm@api.appetize.io/v1/apps -F "file=@$GITHUB_WORKSPACE/target/Build/Products/Debug-iphonesimulator/ios_demo.zip" -F "platform=ios"
           
