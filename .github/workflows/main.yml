@@ -45,9 +45,10 @@ jobs:
          # For Windows, you might need to use a different installation method
 
       - name: Run Gitleaks
-        run: gitleaks git --report-format json --report-path gitleaks-report.json
         env:
           GITLEAKS_ENABLE_SUMMARY: true
+        run: gitleaks git --report-format json --report-path gitleaks-report.json >> $GITLEAKS_STEP_SUMMARY
+        
         
         
       - name: Upload Gitleaks report
