@@ -1,4 +1,3 @@
-//
 //  ViewController.swift
 //  ios_demo
 //
@@ -68,13 +67,19 @@ class ViewController: UIViewController {
     func getRandomPhoto() {
         let urlString = "https://source.unsplash.com/random/600x600"
         
-        let url = URL(string: urlString)!
-        
-        guard let data = try? Data(contentsOf: url) else {
+        guard let url = URL(string: urlString) else {
             return
         }
         
-        imageView.image = UIImage(data: data)
+        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+            guard let data = data, error == nil else {
+                print("Error: \(error?.localizedDescription ?? "Unknown error")")
+                return
+            }
+            DispatchQueue.main.async {
+                self.imageView.image = UIImage(data: data)
+            }
+        }
+        task.resume()
     }
 }
-
