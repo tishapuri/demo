@@ -54,6 +54,7 @@ jobs:
           xcrun simctl boot "iPhone 15 Pro Max"
           xcrun simctl install booted "ios demo.app"
           echo "running simulator..wait"
+          xcrun simctl launch booted com.gitlab.ios-demo
           #cd ${{ github.workspace }}/Products/Applications
           zip -r ios_demo.zip "ios demo.app"
 
