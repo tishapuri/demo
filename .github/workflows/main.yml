@@ -48,7 +48,8 @@ jobs:
         env:
           GITLEAKS_ENABLE_SUMMARY: true
         run: |
-          gitleaks git --report-format json --report-path gitleaks-report.json
+          gitleaks git --report-format json --report-path gitleaks-report.json --verbose
+          
           #echo "### Gitleaks scan Report" >> $GITHUB_STEP_SUMMARY
           #jq '.' gitleaks-report.json >> $GITHUB_STEP_SUMMARY
         
@@ -60,6 +61,7 @@ jobs:
           name: gitleaks-report
           path: gitleaks-report.json
         if: always()
+        
       - name: Build the app
         run: |
           xcrun simctl list devices
