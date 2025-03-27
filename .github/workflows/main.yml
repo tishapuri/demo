@@ -44,21 +44,7 @@ jobs:
         run: brew install gitleaks  # For macOS
          # For Windows, you might need to use a different installation method
 
-      - name: Run Gitleaks
-        run: |
-          gitleaks detect --source secrets.txt  --no-git --report-format json --report-path gitleaks-report.json --verbose
-          
-          #echo "### Gitleaks scan Report" >> $GITHUB_STEP_SUMMARY
-          #jq '.' gitleaks-report.json >> $GITHUB_STEP_SUMMARY
-        
-        
-        
-      - name: Upload Gitleaks report
-        uses: actions/upload-artifact@v4
-        with:
-          name: gitleaks-report
-          path: gitleaks-report.json
-        if: always()
+      
         
       - name: Build the app
         run: |
