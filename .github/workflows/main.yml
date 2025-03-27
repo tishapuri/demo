@@ -31,10 +31,10 @@ jobs:
       - name: Compile the build 
         run: |
           xcrun simctl list devices
-          xcodebuild -scheme "ios demo" -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 15 Pro Max' CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO build -derivedDataPath $GITHUB_WORKSPACE/build
+          xcodebuild -scheme "ios demo" -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 15 Pro Max' CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO build -derivedDataPath $GITHUB_WORKSPACE/target
           xcodebuild -scheme "ios demo" -showBuildSettings | grep BUILD_DIR
           xcodebuild -scheme "ios demo" -configuration Debug -sdk iphonesimulator -showBuildSettings | grep BUILD_DIR
-          echo "target directory is $TARGET_BUILD_DIR"
+         
         if: always()
         
       - name: List build directory
@@ -44,7 +44,7 @@ jobs:
           ls -ltr $GITHUB_WORKSPACE/build
           cd build 
           ls -ltr 
-          ls -ltr $GITHUB_WORKSPACE/build/Build/Products/Debug-iphonesimulator
+          ls -ltr $GITHUB_WORKSPACE/target/Build/Products/Debug-iphonesimulator
           
           #ls /Users/runner/Library/Developer/Xcode/DerivedData/ios_demo-cmuzcbcjvxsekzadiatuzsfbfxvx/Build/Products/Debug-iphonesimulator
           
@@ -52,7 +52,7 @@ jobs:
       - name: Compress the .app file
         run: |
           echo "present working : $(pwd)"
-          cd  /Users/runner/Library/Developer/Xcode/DerivedData/ios_demo-cmuzcbcjvxsekzadiatuzsfbfxvx/Build/Products/Debug-iphonesimulator
+          cd  $GITHUB_WORKSPACE/target/Build/Products/Debug-iphonesimulator
           ls -ltr
           #xcrun simctl boot "iPhone 15 Pro Max"
           #xcrun simctl install booted "ios demo.app"
@@ -62,6 +62,6 @@ jobs:
 
       - name: Upload to Appetize
         run: |
-          curl --http1.1 https://tok_uqegreafft5ppbyfpzw22cuxlm@api.appetize.io/v1/apps -F "file=@/Users/runner/Library/Developer/Xcode/DerivedData/ios_demo-cmuzcbcjvxsekzadiatuzsfbfxvx/Build/Products/Debug-iphonesimulator/ios_demo.zip" -F "platform=ios"
+          curl --http1.1 https://tok_uqegreafft5ppbyfpzw22cuxlm@api.appetize.io/v1/apps -F "file=@$GITHUB_WORKSPACE/target/Build/Products/Debug-iphonesimulatorBuild/Products/Debug-iphonesimulator/ios_demo.zip" -F "platform=ios"
           #curl -v -F "file=@${{ github.workspace }}/Products/Applications/ios_demo.zip" -H "Authorization: Bearer tok_uqegreafft5ppbyfpzw22cuxlm" https://appetize.io/upload
       
