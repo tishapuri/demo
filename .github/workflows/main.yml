@@ -45,7 +45,7 @@ jobs:
          # For Windows, you might need to use a different installation method
 
       - name: Run Gitleaks
-        run: gitleaks git --report-format json --report-path gitleaks-report.json  || true
+        run: gitleaks git --report-format json --report-path gitleaks-report.json 
         
         
       - name: Upload Gitleaks report
