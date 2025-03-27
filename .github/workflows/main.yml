@@ -34,7 +34,7 @@ jobs:
         run: |
           xcrun simctl list devices
           xcodebuild -scheme "ios demo" -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 15 Pro Max' CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO build 
-          ls /Users/runner/Library/Developer/Xcode/DerivedData/ios_demo-cmuzcbcjvxsekzadiatuzsfbfxvx/Build/Products/Debug-iphoneos/
+          # ls /Users/runner/Library/Developer/Xcode/DerivedData/ios_demo-cmuzcbcjvxsekzadiatuzsfbfxvx/Build/Products/Debug-iphoneos/
           ls /Users/runner/Library/Developer/Xcode/DerivedData/ios_demo-cmuzcbcjvxsekzadiatuzsfbfxvx/Build/Products/Debug-iphonesimulator
           xcodebuild -scheme "ios demo" -showBuildSettings | grep BUILD_DIR
         if: always()
@@ -48,6 +48,7 @@ jobs:
         run: |
           #ls -lrt Products
           #cd /Users/runner/Library/Developer/Xcode/DerivedData/ios_demo-cmuzcbcjvxsekzadiatuzsfbfxvx/Build/Products/Debug-iphoneos/
+          
           cd  /Users/runner/Library/Developer/Xcode/DerivedData/ios_demo-cmuzcbcjvxsekzadiatuzsfbfxvx/Build/Products/Debug-iphonesimulator
           ls -ltr
           xcrun simctl boot "iPhone 15 Pro Max"
