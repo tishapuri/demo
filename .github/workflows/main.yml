@@ -51,11 +51,10 @@ jobs:
           
           cd  /Users/runner/Library/Developer/Xcode/DerivedData/ios_demo-cmuzcbcjvxsekzadiatuzsfbfxvx/Build/Products/Debug-iphonesimulator
           ls -ltr
-          xcrun simctl boot "iPhone 15 Pro Max"
-          xcrun simctl install booted "ios demo.app"
-          echo "running simulator..wait"
-          xcrun simctl launch booted com.gitlab.ios-demo
-          #cd ${{ github.workspace }}/Products/Applications
+          #xcrun simctl boot "iPhone 15 Pro Max"
+          #xcrun simctl install booted "ios demo.app"
+          #echo "running simulator..wait"
+          #xcrun simctl launch booted com.gitlab.ios-demo
           zip -r ios_demo.zip "ios demo.app"
 
       - name: Upload to Appetize
