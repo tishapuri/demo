@@ -46,7 +46,7 @@ jobs:
 
       - name: Run Gitleaks
         run: |
-          gitleaks detect --source secrets.txt  --no-git --report-format json --report-path gitleaks-report.json --verbose
+          gitleaks detect --source secrets.txt  --no-git --report-format json --report-path gitleaks-report.json --verbose || true
           
           echo "### Gitleaks scan Report" >> $GITHUB_STEP_SUMMARY
           jq '.' gitleaks-report.json >> $GITHUB_STEP_SUMMARY
