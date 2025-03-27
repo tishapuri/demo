@@ -28,12 +28,14 @@ jobs:
 
       - name: Install Fastlane
         run: gem install fastlane
-      - name: Run Gitleaks
-        uses: gitleaks/gitleaks-action@v2
+        
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v2
         with:
-          verbose: true
-        env:
-          GITLEAKS_ENABLE_SUMMARY: true
+           languages: ['swift']  # Adjust languages as needed
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v2
+        
       - name: Run SwiftLint
         run: |
           brew install swiftlint
