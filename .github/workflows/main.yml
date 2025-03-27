@@ -32,6 +32,7 @@ jobs:
       
       - name: Compile the build 
         run: |
+          xcrun simctl list devices
           xcodebuild -scheme "ios demo" -sdk iphonesimulator -destination 'platform=iOS Simulator' CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO build 
           ls /Users/runner/Library/Developer/Xcode/DerivedData/ios_demo-cmuzcbcjvxsekzadiatuzsfbfxvx/Build/Products/Debug-iphoneos/
           xcodebuild -scheme "ios demo" -showBuildSettings | grep BUILD_DIR
