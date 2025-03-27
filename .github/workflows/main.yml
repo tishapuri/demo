@@ -48,7 +48,8 @@ jobs:
           #ls -lrt Products
           cd /Users/runner/Library/Developer/Xcode/DerivedData/ios_demo-cmuzcbcjvxsekzadiatuzsfbfxvx/Build/Products/Debug-iphoneos/
           ls -ltr
-          
+          xcrun simctl install B08AD118-CF3A-4390-B9D3-A970C194F51F ios demo.app
+          echo "running simulator..wait"
           #cd ${{ github.workspace }}/Products/Applications
           zip -r ios_demo.zip "ios demo.app"
 
