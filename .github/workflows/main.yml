@@ -84,6 +84,8 @@ jobs:
             -Dsonar.login=9363ceb8b3189da6f03891a31b6b2a54cba433c1  
       - name: unit test 
         run: |
+          echo "running fastlane"
+          fastlane run run_tests
           xcodebuild test -scheme "ios demo" -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 15 Pro Max'
       - name: Build the app
         run: |
