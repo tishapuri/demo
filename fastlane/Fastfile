@@ -3,6 +3,7 @@ lane :build_for_simulator do
     scheme: "ios demo",
     configuration: "Debug",
     sdk: "iphonesimulator",
+    export_method: nil,
     build_path: "build"
 )
 end
