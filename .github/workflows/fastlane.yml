@@ -33,5 +33,7 @@ jobs:
         run: fastlane build_for_simulator
       - name: list directory
         run: ls -ltr $GITHUB_WORKSPACE/target/Build/Products/Debug-iphonesimulator
+      - name: Install appetize plugin
+        run: fastlane add_plugin appetize
       
      
