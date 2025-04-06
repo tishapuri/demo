@@ -32,7 +32,7 @@ jobs:
       - name: Run Fastlane
         run: fastlane build_for_simulator
       - name: list directory
-        run: ls -ltr target/Build/Products/Debug-iphonesimulator
+        run: find . -name "*.app"
       - name: Install appetize plugin
         run: fastlane add_plugin appetize
       
