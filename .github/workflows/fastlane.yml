@@ -31,7 +31,7 @@ jobs:
       - name: Install Fastlane
         run: gem install fastlane
     
-      - name: Run Fastlane
+      - name: Build App for iOS simulator
         run: fastlane build_for_simulator
       - name: list directory
         run: find . -name "*.app"
