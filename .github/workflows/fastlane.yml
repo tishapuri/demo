@@ -1,0 +1,35 @@
+
+name: Build and Upload to Appetize
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.1.0'
+
+      - name: Install dependencies
+        run: |
+          gem install bundler
+          bundle install
+
+      - name: Install Fastlane
+        run: gem install fastlane
+      - name: Run Fastlane
+        run: fastlane build_for_simulator
+      
+     
