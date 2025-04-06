@@ -5,6 +5,8 @@ lane :build_for_simulator do
     sdk: "iphonesimulator",
     export_method: nil,
     destination: "generic/platform=iOS Simulator",
+    skip_package_ipa: true,
+    skip_archive: true,
     build_path: "build"
 )
 end
