@@ -30,15 +30,13 @@ jobs:
 
       - name: Install Fastlane
         run: gem install fastlane
-      - name: Install Fastlane
-        run: fastlane plugins list
-      - name: Install Fastlane Plugin
-        run: fastlane install_plugins
+    
       - name: Run Fastlane
         run: fastlane build_for_simulator
       - name: list directory
         run: find . -name "*.app"
-      - name: Install appetize plugin
-        run: fastlane add_plugin appetize
+      - name: run app on appetize
+        run: fastlane appetize
+     
       
      
