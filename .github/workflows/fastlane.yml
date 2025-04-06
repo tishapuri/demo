@@ -29,6 +29,8 @@ jobs:
 
       - name: Install Fastlane
         run: gem install fastlane
+      - name: Install Fastlane Plugin
+        run: fastlane install_plugins
       - name: Run Fastlane
         run: fastlane build_for_simulator
       - name: list directory
