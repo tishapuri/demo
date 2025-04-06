@@ -10,6 +10,15 @@ lane :build_for_simulator do
 )
 end
 
+lane :screenshots do
+   capture_screenshots(
+     devices: ["iPhone 12", "iPhone 12 Pro"],
+     languages: ["en-US", "fr-FR"]
+   )
+ end
+
+
+
 lane :upload_to_appetize do
   appetize(
      path: "./target/Build/Products/Debug-iphonesimulator/ios_demo.zip",
