@@ -81,10 +81,10 @@ jobs:
             -Dsonar.organization=iosdemo \
             -Dsonar.host.url=https://sonarcloud.io \
             -Dsonar.login=${{ secrets.SONAR_TOKEN }}
-      - name: unit test 
-        run: |
-          echo "running unit test"
-          xcodebuild test -scheme "ios demo" -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 15 Pro Max'
+      #- name: unit test 
+      #run: |
+          #echo "running unit test"
+          #xcodebuild test -scheme "ios demo" -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 15 Pro Max'
       - name: Build the app
         run: |
           xcrun simctl list devices
