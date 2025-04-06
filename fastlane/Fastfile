@@ -4,6 +4,7 @@ lane :build_for_simulator do
     configuration: "Debug",
     sdk: "iphonesimulator",
     export_method: nil,
+    destination: "generic/platform=iOS Simulator",
     build_path: "build"
 )
 end
