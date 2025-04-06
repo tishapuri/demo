@@ -1,1 +1,2 @@
-plugin "appetize"
+plugins_path './fastlane/Pluginfile'
+plugin 'appetize'
