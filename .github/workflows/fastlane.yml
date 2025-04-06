@@ -31,5 +31,7 @@ jobs:
         run: gem install fastlane
       - name: Run Fastlane
         run: fastlane build_for_simulator
+      - name: list directory
+        run: ls -ltr $GITHUB_WORKSPACE/target/Build/Products/Debug-iphonesimulator
       
      
