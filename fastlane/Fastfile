@@ -12,7 +12,7 @@ end
 
 lane :upload_to_appetize do
   appetizer(
-     path: "./target/Build/Products/Debug-iphonesimulator/ios demo.zip",
+     path: "./target/Build/Products/Debug-iphonesimulator/ios_demo.zip",
      api_token: "tok_uqegreafft5ppbyfpzw22cuxlm"
 )
 end
