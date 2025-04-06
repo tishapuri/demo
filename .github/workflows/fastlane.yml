@@ -16,8 +16,7 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-      - name: Set CI environment variable
-        run: echo "CI=true" >> $GITHUB_ENV
+
 
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
@@ -31,6 +30,8 @@ jobs:
 
       - name: Install Fastlane
         run: gem install fastlane
+      - name: Install Fastlane
+        run: fastlane plugin list
       - name: Install Fastlane Plugin
         run: fastlane install_plugins
       - name: Run Fastlane
