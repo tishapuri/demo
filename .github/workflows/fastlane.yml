@@ -35,8 +35,15 @@ jobs:
         run: fastlane build_for_simulator
       - name: list directory
         run: find . -name "*.app"
+      - name: Compress the .app file
+        run: |
+          echo "present working : $(pwd)"
+          cd  $GITHUB_WORKSPACE/target/Build/Products/Debug-iphonesimulator
+          ls -ltr
+          zip -r ios_demo.zip "ios demo.app"
+
       - name: run app on appetize
-        run: fastlane appetize
+        run: fastlane upload_to_appetize
      
       
      
