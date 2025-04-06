@@ -1,6 +1,6 @@
 lane :build_for_simulator do
   build_app(
-    schema: "ios demo",
+    scheme: "ios demo",
     configuration: "Debug",
     sdk: "iphonesimulator",
     build_path: "build"
