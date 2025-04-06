@@ -3,7 +3,6 @@ lane :build_for_simulator do
     scheme: "ios demo",
     configuration: "Debug",
     sdk: "iphonesimulator",
-    export_method: nil,
     destination: "generic/platform=iOS Simulator",
     skip_package_ipa: true,
     skip_archive: true,
