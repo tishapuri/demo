@@ -41,10 +41,8 @@ jobs:
           cd  $GITHUB_WORKSPACE/target/Build/Products/Debug-iphonesimulator
           ls -ltr
           zip -r ios_demo.zip "ios demo.app"
-      - name: screenshot
-        run : fastlane screenshots
-      #- name: run app on appetize
-       # run: fastlane upload_to_appetize
+      - name: run app on appetize
+        run: fastlane upload_to_appetize
      
       
      
