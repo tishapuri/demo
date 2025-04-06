@@ -43,8 +43,7 @@ jobs:
              swiftlint_report.html
       - name: Install Gitleaks
         run: brew install gitleaks  # For macOS
-         # For Windows, you might need to use a different installation method
-
+         
       - name: Run Gitleaks
         env:
           GITLEAKS_ENABLE_SUMMARY: true
@@ -81,7 +80,7 @@ jobs:
             -Dsonar.projectKey=tishapuri_demo \
             -Dsonar.organization=iosdemo \
             -Dsonar.host.url=https://sonarcloud.io \
-            -Dsonar.login=9363ceb8b3189da6f03891a31b6b2a54cba433c1  
+            -Dsonar.login=${{ secrets.SONAR_TOKEN }}
       - name: unit test 
         run: |
           echo "running unit test"
@@ -107,13 +106,9 @@ jobs:
           echo "present working : $(pwd)"
           cd  $GITHUB_WORKSPACE/target/Build/Products/Debug-iphonesimulator
           ls -ltr
-          #xcrun simctl boot "iPhone 15 Pro Max"
-          #xcrun simctl install booted "ios demo.app"
-          #echo "running simulator..wait"
-          #xcrun simctl launch booted com.gitlab.ios-demo
           zip -r ios_demo.zip "ios demo.app"
 
       - name: Upload to Appetize
         run: |
-          curl --http1.1 https://tok_uqegreafft5ppbyfpzw22cuxlm@api.appetize.io/v1/apps -F "file=@$GITHUB_WORKSPACE/target/Build/Products/Debug-iphonesimulator/ios_demo.zip" -F "platform=ios"
+          curl --http1.1 https://${{ secrets.APPETIZE_TOKEN }}@api.appetize.io/v1/apps -F "file=@$GITHUB_WORKSPACE/target/Build/Products/Debug-iphonesimulator/ios_demo.zip" -F "platform=ios"
           
