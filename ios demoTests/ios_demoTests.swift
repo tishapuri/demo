@@ -25,6 +25,13 @@ final class ios_demoTests: XCTestCase {
         // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
         // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
     }
+    
+
+    // This function violates the SWIFT custom rule because it ends with `rule`
+
+    func testExampleRule() {
+        // Test code here
+    }
 
     func testPerformanceExample() throws {
         // This is an example of a performance test case.
