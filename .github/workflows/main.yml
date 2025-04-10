@@ -34,10 +34,8 @@ jobs:
           brew install snyk
       - name: Authenticate Snyk
         run: snyk auth ${{ secrets.SNYK_TOKEN }}
-      - name: List all files
-        run: find .
       - name: Run Snyk Test
-        run: snyk test 
+        run: snyk test --severity-threshold=low|medium|high|critical --json
 
       - name: Run SwiftLint
         run: |
