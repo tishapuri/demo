@@ -106,7 +106,7 @@ custom_rules:
 
   rule_test_function:
     included: ios demoTests/ios_demoTests.swift
-    name: Rule Test Function
+    name: Rule Test Functions
     message: Rule Test Function mustn't end with `rule`
     regex: func\s*test\w+(r|R)ule\(\)
     severity: error
