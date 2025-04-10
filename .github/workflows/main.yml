@@ -35,13 +35,13 @@ jobs:
       - name: Authenticate Snyk
         run: snyk auth ${{ secrets.SNYK_TOKEN }}
       - name: Run Snyk Test
-        run: snyk test --severity-threshold=medium --sarif-file-output=snyk_report || true
+        run: snyk test --severity-threshold=medium --sarif-file-output=snyk_report.sarif || true
       - name: Upload Snyk Report
         uses: actions/upload-artifact@v4
         with:
-          name: swiftlint-report
+          name: snyk-report
           path: |
-             snyk_report
+             snyk_report.sarif
 
       - name: Run SwiftLint
         run: |
