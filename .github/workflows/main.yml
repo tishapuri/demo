@@ -28,7 +28,9 @@ jobs:
           gem install bundler
           bundle install
       - name: snyk scanning
-        uses: snyk/actions/setup@0.4.0
+        run : |
+          brew tap snyk/tap
+          brew install snyk
       
 
       - name: Run SwiftLint
