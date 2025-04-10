@@ -28,7 +28,9 @@ jobs:
         run: |
           gem install bundler
           bundle install
-
+      - name: Snyk
+        run : brew install snyk
+          
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
