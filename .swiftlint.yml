@@ -1,9 +1,8 @@
 # Directory and file filters
-included:
-  - Plugins
-  - Source
-  - Tests
-  - Package.swift
+#included:
+ # - Plugins
+  #- Source
+
 excluded:
   - Tests/BuiltInRulesTests/Resources
   - Tests/FrameworkTests/Resources
