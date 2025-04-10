@@ -28,6 +28,11 @@ jobs:
         run: |
           gem install bundler
           bundle install
+
+      - name: Trufflehog seret scanning
+        run :  |
+          brew install trufflehog
+          trufflehog git file://. --since-commit main --branch feature/us-blockmerge --results=verified,unknown --fail
       - name: snyk scanning
         #https://docs.snyk.io/snyk-cli/install-or-update-the-snyk-cli
         run : |
