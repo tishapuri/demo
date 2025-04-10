@@ -35,7 +35,7 @@ jobs:
       - name: Authenticate Snyk
         run: snyk auth ${{ secrets.SNYK_TOKEN }}
       - name: Run Snyk Test
-        run: snyk test --severity-threshold=low|medium|high|critical --json
+        run: snyk test --severity-threshold=meduim --json
 
       - name: Run SwiftLint
         run: |
