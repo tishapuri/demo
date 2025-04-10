@@ -1,0 +1,28 @@
+name: iOS Build and Deploy 
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+      - 'feature/**'
+  pull_request:
+    branches:
+      - main
+      - develop
+      - 'feature/**'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Notify Teams
+        uses: thechetantalwar/teams-notify@v2
+        with:
+          teams_webhook_url: https://cvcmail.webhook.office.com/webhookb2/42535c46-f01f-4dd0-87bc-e6a8b715684a@cf535dc0-73fc-41ea-a174-17f37ced7fe7/IncomingWebhook/ebfb076d3b5d4a7eba7abd86eb28ff6a/ce6333b6-df44-4e45-b8c3-6e36b1896589/V2H1s2PhKPQUhyFfjgUNr9eedvvvRW_q1ulpxIsulrnsE1
+          message: hello world
+           
