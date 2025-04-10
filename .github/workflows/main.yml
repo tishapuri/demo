@@ -28,10 +28,16 @@ jobs:
           gem install bundler
           bundle install
       - name: snyk scanning
+        #https://docs.snyk.io/snyk-cli/install-or-update-the-snyk-cli
         run : |
           brew tap snyk/tap
           brew install snyk
-      
+      - name: Authenticate Snyk
+        run: snyk auth ${{ secrets.SNYK_TOKEN }}
+      - name: List all files
+        run: find .
+      - name: Run Snyk Test
+        run: snyk test 
 
       - name: Run SwiftLint
         run: |
