@@ -18,7 +18,6 @@ jobs:
           needs: ${{ toJson(needs) }}
           job: ${{ toJson(job) }}
           steps: ${{ toJson(steps) }}
-          dry_run: True
           
           
   with_emails:
@@ -35,4 +34,3 @@ jobs:
           msteams_emails: "mm@mm.mm, yy@yy.yy, rr@rr.rr"
           job: ${{ toJson(job) }}
           steps: ${{ toJson(steps) }}
-          dry_run: ${{ !github.event.action == 'release' }}
