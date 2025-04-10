@@ -5,11 +5,12 @@ on:
     branches:
       - main
       - develop
+      - feature*
   pull_request:
     branches:
       - main
       - develop
-
+      - feature*
 jobs:
   build:
     runs-on: macos-latest
@@ -47,7 +48,7 @@ jobs:
         run: |
           brew install swiftlint
           swiftlint version
-          swiftlint lint --reporter html > swiftlint_report.html || true
+          swiftlint lint --reporter html > swiftlint_report.html
       - name: Upload SwiftLint Report
         uses: actions/upload-artifact@v4
         with:
