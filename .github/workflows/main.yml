@@ -27,9 +27,19 @@ jobs:
           gem install bundler
           bundle install
 
-      - name: Install Fastlane
-        run: gem install fastlane
-      
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Install Snyk CLI
+        run: npm install -g snyk
+
+      - name: Authenticate Snyk
+        run: snyk auth ${{ secrets.SNYK_TOKEN }}
+      - name: Run Snyk Test
+        run: snyk test 
+        
       - name: Run SwiftLint
         run: |
           brew install swiftlint
