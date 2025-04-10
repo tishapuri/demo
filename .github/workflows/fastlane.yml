@@ -1,13 +1,13 @@
 
-name: Build and Upload to Appetize
+name: Fastlane-Build and Upload to Appetize
 
 on:
   push:
     branches:
-      - main
+      - master
   pull_request:
     branches:
-      - main
+      - master
 
 jobs:
   build:
